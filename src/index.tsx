@@ -5,13 +5,18 @@ import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "./reducers";
+import { ThemeProvider, CSSReset } from "@chakra-ui/core";
+import customTheme from "./theme";
 
 const store = createStore(rootReducer);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <ThemeProvider theme={customTheme}>
+    <CSSReset />
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </ThemeProvider>,
   document.getElementById("root")
 );
 

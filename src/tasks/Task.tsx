@@ -2,6 +2,7 @@ import React from "react";
 import { ITask } from "./reducers";
 import { useDispatch } from "react-redux";
 import { TOGGLE_TASK } from "./actions";
+import { Checkbox, Text, Stack } from "@chakra-ui/core";
 
 export interface TaskProps {
   task: ITask;
@@ -14,15 +15,26 @@ const Task: React.FC<TaskProps> = ({ task, index }: TaskProps) => {
     dispatch({ type: TOGGLE_TASK, payload: index });
   };
   return (
-    <div>
-      <input
-        type="checkbox"
-        id={"task" + index.toString()}
-        checked={task.done}
+    <Stack isInline>
+      <Checkbox
+        flex="1"
+        variantColor="pink"
+        size="sm"
+        marginRight="0"
+        isChecked={task.done}
         onChange={onTaskChange}
-      />
-      <label htmlFor={"task" + index.toString()}>{task.label}</label>
-    </div>
+      >
+        <Text>{task.label}</Text>
+      </Checkbox>
+      <Text
+        cursor="pointer"
+        fontSize="xs"
+        color="gray.400"
+        onClick={onTaskChange}
+      >
+        {task.createdAt}
+      </Text>
+    </Stack>
   );
 };
 

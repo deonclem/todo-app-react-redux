@@ -1,6 +1,7 @@
 import React, { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { ADD_TASK } from "./actions";
+import { Input } from "@chakra-ui/core";
 
 const AddTask: React.FC = () => {
   const [taskName, setTaskName] = useState<string>();
@@ -16,11 +17,15 @@ const AddTask: React.FC = () => {
 
   return (
     <form onSubmit={onFormSubit}>
-      <input
+      <Input
+        focusBorderColor="pink.400"
+        size="sm"
         type="text"
         placeholder="Add a task"
         value={taskName}
-        onChange={e => setTaskName(e.target.value)}
+        onChange={(e: FormEvent<HTMLInputElement>) =>
+          setTaskName(e.currentTarget.value)
+        }
       />
     </form>
   );
