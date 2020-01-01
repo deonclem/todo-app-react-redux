@@ -1,6 +1,8 @@
 import { ADD_TASK, TOGGLE_TASK } from "./actions";
 import { Action } from "../reducers";
 import dayjs from "dayjs";
+import "dayjs/locale/fr"; // load on demand
+import i18n from "i18next";
 
 export interface TasksReducerState {
   tasks: Array<ITask>;
@@ -13,12 +15,7 @@ export interface ITask {
 }
 
 const initialState: TasksReducerState = {
-  tasks: [
-    {
-      label: "Check me!",
-      createdAt: dayjs().format("dddd, MMMM D YYYY, h:mm:ss a")
-    }
-  ]
+  tasks: []
 };
 
 const tasksReducer = (state = initialState, { type, payload }: Action) => {
@@ -26,7 +23,9 @@ const tasksReducer = (state = initialState, { type, payload }: Action) => {
     const task: ITask = {
       label: payload,
       done: false,
-      createdAt: dayjs().format("dddd, MMMM D YYYY, h:mm:ss a")
+      createdAt: dayjs()
+        .locale(i18n.language)
+        .format("dddd, MMMM D YYYY, h:mm:ss a")
     };
     const tasks = state.tasks.concat(task);
     return { ...state, tasks };

@@ -1,0 +1,6 @@
+{
+    "tasks": {
+        "title": "My Todo list",
+        "addPlaceholder": "Add a task"
+    }
+}

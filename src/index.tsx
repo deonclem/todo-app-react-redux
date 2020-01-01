@@ -7,6 +7,7 @@ import { createStore } from "redux";
 import rootReducer from "./reducers";
 import { ThemeProvider, CSSReset } from "@chakra-ui/core";
 import customTheme from "./theme";
+import "./i18n";
 
 const store = createStore(rootReducer);
 
