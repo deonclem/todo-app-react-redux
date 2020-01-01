@@ -24,16 +24,23 @@ const Task: React.FC<TaskProps> = ({ task, index }: TaskProps) => {
         isChecked={task.done}
         onChange={onTaskChange}
       >
-        <Text>{task.label}</Text>
+        <Text
+          color={task.done ? "gray.400" : "black"}
+          as={task.done ? "s" : undefined}
+        >
+          {task.label}
+        </Text>
       </Checkbox>
-      <Text
-        cursor="pointer"
-        fontSize="xs"
-        color="gray.400"
-        onClick={onTaskChange}
-      >
-        {task.createdAt}
-      </Text>
+      {!task.done && (
+        <Text
+          cursor="pointer"
+          fontSize="xs"
+          color="gray.400"
+          onClick={onTaskChange}
+        >
+          {task.createdAt}
+        </Text>
+      )}
     </Stack>
   );
 };
