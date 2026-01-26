@@ -63,6 +63,6 @@
     ]
   },
   "devDependencies": {
-    "source-map-explorer": "^2.2.0"
+    "source-map-explorer": "^2.5.3"
   }
 }
